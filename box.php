@@ -28,8 +28,7 @@
 				$rsc = mysql_fetch_row($result);
 				$id_m = $rsc[7];
 				$id_l = $rsc[2];
-				$sq_l = mysql_query("select * from konsultasi where id_konsultasi = '".$id_l."' ");
-				$res_l = mysql_fetch_row($sq_l);
+				
             }else if($key == "emergency"){
                 $reload = "box.php?pagination=true&serv=$key";
                 $sql =  "SELECT * FROM order_emergency WHERE id_user like '$id' ";
@@ -40,8 +39,7 @@
 				$rsc = mysql_fetch_row($result);
 				$id_m = $rsc[6];
 				$id_l = $rsc[2];
-				$sq_l = mysql_query("select * from emergency where id_emergency = '".$id_l."' ");
-				$res_l = mysql_fetch_row($sq_l);
+				
             }else if($key == "umum"){
                 $reload = "box.php?pagination=true&serv=$key";
                 $sql =  "SELECT * FROM order_servis_umum WHERE id_user like '$id' ";
@@ -176,6 +174,23 @@
 				
 				<?php if($key != "sparepart"){ ?>
 				<h4>ID order            : <?php echo $data[0]?></h4>
+				<?php 
+				if($key == "konsultasi"){
+				$sq_l = mysql_query("select * from konsultasi where id_konsultasi = '".$data[2]."' ");
+				$res_l = mysql_fetch_row($sq_l);
+				}else if($key == "emergency"){
+				$sq_l = mysql_query("select * from emergency where id_emergency = '".$data[2]."' ");
+				$res_l = mysql_fetch_row($sq_l);	
+				}else if($key == "umum"){
+				$sq_l = mysql_query("select * from umum where id_umum = '".$data[2]."' ");
+				$res_l = mysql_fetch_row($sq_l);	
+				}else if($key == "berkala"){
+				$sq_l = mysql_query("select * from berkala where id_berkala = '".$data[2]."' ");
+				$res_l = mysql_fetch_row($sq_l);	
+				}else if($key == "cleaning"){
+				$sq_l = mysql_query("select * from cleaning where id_cleaning = '".$data[2]."' ");
+				$res_l = mysql_fetch_row($sq_l);	
+				}?>
 				<h4>Tipe layanan        : <?php echo $res_l[1]?></h4>
 				<?php } ?>
 				

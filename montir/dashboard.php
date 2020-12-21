@@ -29,8 +29,8 @@
 	</div>
 		<div class="col-md-12">
 				<img src="image/gelandewagen.jpg" class="img-rounded img-profile hidden-xs hidden-sm" width="100%" height="60%" >
-				<img src="image/civic.jpg" class="img-rounded img-profile hidden-md hidden-sm hidden-lg" width="100%" height="25%" >
-				<img src="image/audi.jpg" class="img-rounded img-profile hidden-md hidden-lg hidden-xs" width="100%" height="30%" >
+				<img src="image/gelandewagen.jpg" class="img-rounded img-profile hidden-md hidden-sm hidden-lg" width="100%" height="25%" >
+				<img src="image/gelandewagen.jpg" class="img-rounded img-profile hidden-md hidden-lg hidden-xs" width="100%" height="50%" >
 		</div>	
     </div>
 </div>

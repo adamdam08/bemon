@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 04, 2019 at 04:49 AM
+-- Generation Time: May 03, 2019 at 02:39 AM
 -- Server version: 10.1.9-MariaDB
 -- PHP Version: 5.6.15
 
@@ -32,16 +32,15 @@ CREATE TABLE `admin` (
   `tgl_lahir` date NOT NULL,
   `no_ktp` varchar(16) NOT NULL,
   `no_hp` varchar(15) NOT NULL,
-  `jenis_kelamin` enum('L','P') NOT NULL,
-  `image` varchar(32) NOT NULL
+  `jenis_kelamin` enum('L','P') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `admin`
 --
 
-INSERT INTO `admin` (`id_admin`, `nama`, `tgl_lahir`, `no_ktp`, `no_hp`, `jenis_kelamin`, `image`) VALUES
-(3, 'adam rachmawan', '1999-02-27', '3503112511000003', '085815368963', 'L', '');
+INSERT INTO `admin` (`id_admin`, `nama`, `tgl_lahir`, `no_ktp`, `no_hp`, `jenis_kelamin`) VALUES
+(3, 'adam rachmawan', '1999-02-27', '3503112511000003', '085815368963', 'L');
 
 -- --------------------------------------------------------
 
@@ -115,15 +114,28 @@ CREATE TABLE `customer` (
   `id_customer` int(11) NOT NULL,
   `nama` varchar(40) NOT NULL,
   `no_hp` varchar(15) NOT NULL,
-  `saldo` int(32) NOT NULL DEFAULT '0'
+  `saldo` int(32) NOT NULL DEFAULT '0',
+  `f_kitas` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `customer`
 --
 
-INSERT INTO `customer` (`id_customer`, `nama`, `no_hp`, `saldo`) VALUES
-(1, 'adam rahmawanzx', '6281249863296', 9100000);
+INSERT INTO `customer` (`id_customer`, `nama`, `no_hp`, `saldo`, `f_kitas`) VALUES
+(1, 'adam achmad rachmawan', '6285815368963', 0, 'mysql_database_logo_data_base-512.png'),
+(2, 'adam achmad rachmawan', '6282132400171', 0, 'UM.png'),
+(3, 'adam achmad rachmawan', '6282132400171', 0, 'UM.png'),
+(4, 'adam', '6282132400171', 0, 'Miata.png'),
+(5, 'adam', '6282132400171', 0, 'Miata.png'),
+(6, 'adam', '6282132400171', 0, '6f49db0fa6482376d0c417c3f156f4d8.jpg'),
+(7, 'adam', '6282132400171', 0, '6f49db0fa6482376d0c417c3f156f4d8.jpg'),
+(8, 'adam', '6282132400171', 0, '6f49db0fa6482376d0c417c3f156f4d8.jpg'),
+(9, 'adam', '6282132400171', 0, '6f49db0fa6482376d0c417c3f156f4d8.jpg'),
+(10, 'adam', '6282132400171', 0, '6f49db0fa6482376d0c417c3f156f4d8.jpg'),
+(11, 'adam', '6282132400171', 0, '6f49db0fa6482376d0c417c3f156f4d8.jpg'),
+(12, 'adam', '6282132400171', 0, '1920x1080_Glitch_1113.jpg'),
+(13, 'adam', '6282132400171', 0, '1920x1080_Glitch_1113.jpg');
 
 -- --------------------------------------------------------
 
@@ -143,7 +155,8 @@ CREATE TABLE `customer_acc` (
 --
 
 INSERT INTO `customer_acc` (`id_customer`, `email`, `password`, `verifikasi`) VALUES
-(1, 'adamrahmawan9320@gmail.com', '58fdc71a23e68e4cf2ea18fdef4497ef', 'sudah');
+(1, 'adamrahmawan120@gmail.com', '25d55ad283aa400af464c76d713c07ad', 'sudah'),
+(12, 'bengkelmotorol01@gmail.com', '25d55ad283aa400af464c76d713c07ad', 'belum');
 
 -- --------------------------------------------------------
 
@@ -191,6 +204,28 @@ INSERT INTO `konsultasi` (`id_konsultasi`, `tipe_masalah`, `harga`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `laporan`
+--
+
+CREATE TABLE `laporan` (
+  `id_laporan` int(32) NOT NULL,
+  `id_customer` int(32) NOT NULL,
+  `id_order` int(32) NOT NULL,
+  `tipe_layanan` varchar(32) NOT NULL,
+  `id_montir` int(32) NOT NULL,
+  `kronologi` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `laporan`
+--
+
+INSERT INTO `laporan` (`id_laporan`, `id_customer`, `id_order`, `tipe_layanan`, `id_montir`, `kronologi`) VALUES
+(2, 1, 1, 'order_konsultasi', 3, 'asdasdas');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `montir`
 --
 
@@ -210,7 +245,9 @@ CREATE TABLE `montir` (
 --
 
 INSERT INTO `montir` (`id_montir`, `nama`, `tgl_lahir`, `jenis_kelamin`, `no_ktp`, `no_sim`, `no_hp`, `rating`) VALUES
-(1, 'adam achmat', '2019-03-03', 'L', '000003511111111001', '000003511111111001', '6285815368964', 100);
+(1, 'adam achmad', '2019-03-03', 'L', '000003511111111001', '000003511111111001', '6285815368964', 100),
+(2, 'adam m', '2019-04-11', 'L', '', '', '6285353632594', 100),
+(3, 'lalu sugab', '2014-12-30', 'L', '35031116262262', '18056464646', '6285815368964', 97);
 
 -- --------------------------------------------------------
 
@@ -229,7 +266,9 @@ CREATE TABLE `montir_acc` (
 --
 
 INSERT INTO `montir_acc` (`id_montir`, `email`, `password`) VALUES
-(1, 'adamrahmawan120@gmail.com', '9a16d5b9004780f875df4f013202cecd');
+(1, 'adamrahmawan120@gmail.com', '9a16d5b9004780f875df4f013202cecd'),
+(2, 'adamrahmawan16@yahoo.com', '25d55ad283aa400af464c76d713c07ad'),
+(3, 'adamrahmawan162@yahoo.com', '25d55ad283aa400af464c76d713c07ad');
 
 -- --------------------------------------------------------
 
@@ -247,13 +286,6 @@ CREATE TABLE `order_cleaning` (
   `id_montir` int(32) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `order_cleaning`
---
-
-INSERT INTO `order_cleaning` (`id_order`, `id_user`, `id_layanan`, `id_kendaraan`, `status`, `biaya`, `id_montir`) VALUES
-(1, 1, 1, '5', 'Mencari montir', 10000, 0);
-
 -- --------------------------------------------------------
 
 --
@@ -269,14 +301,6 @@ CREATE TABLE `order_emergency` (
   `biaya` int(32) NOT NULL,
   `id_montir` int(32) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `order_emergency`
---
-
-INSERT INTO `order_emergency` (`id_order`, `id_user`, `id_layanan`, `id_kendaraan`, `status`, `biaya`, `id_montir`) VALUES
-(5, 1, 3, '3', 'Pekerjaan Selesai', 45000, 1),
-(7, 1, 2, '3', 'Pekerjaan Dimulai', 35000, 1);
 
 -- --------------------------------------------------------
 
@@ -295,14 +319,6 @@ CREATE TABLE `order_konsultasi` (
   `id_montir` int(32) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `order_konsultasi`
---
-
-INSERT INTO `order_konsultasi` (`id_order`, `id_user`, `id_layanan`, `id_kendaraan`, `status`, `biaya`, `keluhan`, `id_montir`) VALUES
-(3, 1, 4, 4, 'Pekerjaan Selesai', 15000, 'fdas', 1),
-(4, 1, 4, 5, 'Mencari montir', 15000, 'a', 0);
-
 -- --------------------------------------------------------
 
 --
@@ -318,13 +334,6 @@ CREATE TABLE `order_servis_berkala` (
   `biaya` int(32) NOT NULL,
   `id_montir` int(32) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `order_servis_berkala`
---
-
-INSERT INTO `order_servis_berkala` (`id_order`, `id_user`, `id_layanan`, `tipe_kendaraan`, `status`, `biaya`, `id_montir`) VALUES
-(1, 1, 2, '7', 'Mencari montir', 120000, 0);
 
 -- --------------------------------------------------------
 
@@ -342,13 +351,6 @@ CREATE TABLE `order_servis_umum` (
   `id_montir` int(32) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `order_servis_umum`
---
-
-INSERT INTO `order_servis_umum` (`id_order`, `id_user`, `id_layanan`, `id_kendaraan`, `status`, `biaya`, `id_montir`) VALUES
-(1, 1, 1, '21', 'Mencari montir', 45000, 0);
-
 -- --------------------------------------------------------
 
 --
@@ -363,8 +365,26 @@ CREATE TABLE `order_spare_part` (
   `status` varchar(32) NOT NULL,
   `biaya` int(32) NOT NULL,
   `id_montir` int(32) NOT NULL,
-  `id_layanan` int(32) NOT NULL
+  `id_layanan` int(32) NOT NULL,
+  `id_struk` int(32) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `order_spare_part`
+--
+
+INSERT INTO `order_spare_part` (`id_order`, `id_user`, `id_sparepart`, `layanan`, `status`, `biaya`, `id_montir`, `id_layanan`, `id_struk`) VALUES
+(1, 1, 109, 'order_emergency', 'selesai', 249000, 3, 3, 1),
+(2, 1, 109, 'order_emergency', 'selesai', 249000, 3, 4, 2),
+(3, 1, 106, 'order_emergency', 'selesai', 160000, 3, 4, 2),
+(4, 1, 109, 'order_emergency', 'selesai', 249000, 3, 5, 3),
+(5, 1, 106, 'order_emergency', 'selesai', 160000, 3, 5, 3),
+(6, 1, 107, 'order_emergency', 'selesai', 133000, 3, 5, 3),
+(7, 1, 109, 'order_emergency', 'selesai', 249000, 3, 6, 4),
+(8, 1, 106, 'order_emergency', 'selesai', 160000, 3, 6, 4),
+(9, 1, 107, 'order_emergency', 'selesai', 133000, 3, 6, 4),
+(10, 1, 102, 'order_emergency', 'selesai', 167000, 3, 6, 4),
+(11, 1, 103, 'order_emergency', 'selesai', 142000, 3, 1, 5);
 
 -- --------------------------------------------------------
 
@@ -377,15 +397,6 @@ CREATE TABLE `pembayaran_saldo` (
   `id_saldo` int(10) NOT NULL,
   `gambar` varchar(1000) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `pembayaran_saldo`
---
-
-INSERT INTO `pembayaran_saldo` (`id_pembayaran`, `id_saldo`, `gambar`) VALUES
-(5, 3, '55fc74b11ee7cb7b59e24ab99df006ad_t.jpg'),
-(6, 4, 'E46.jpeg'),
-(8, 5, '03ae130fb02f517c27b9dc26397c4809_t.jpg');
 
 -- --------------------------------------------------------
 
@@ -400,6 +411,20 @@ CREATE TABLE `penilaian` (
   `saran` varchar(256) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `penilaian`
+--
+
+INSERT INTO `penilaian` (`id_order`, `id_user`, `id_montir`, `saran`) VALUES
+(1, 1, 3, 'sdsds'),
+(2, 1, 3, 'bekerja b aik'),
+(3, 1, 3, 'Bekerja Bsaik'),
+(4, 1, 3, 'Bekerja baik\r\n'),
+(5, 1, 3, 'Bekerja baik\r\n'),
+(1, 1, 3, 'Bekerja Baik'),
+(2, 2, 3, ''),
+(1, 9, 3, 'bekerja lah lebih baik ya');
+
 -- --------------------------------------------------------
 
 --
@@ -412,15 +437,6 @@ CREATE TABLE `saldo` (
   `nominal` int(10) NOT NULL,
   `status` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `saldo`
---
-
-INSERT INTO `saldo` (`id_saldo`, `id_customer`, `nominal`, `status`) VALUES
-(3, 1, 1000000, 'Lunas'),
-(4, 1, 5000000, 'Lunas'),
-(5, 1, 100000, 'Lunas');
 
 -- --------------------------------------------------------
 
@@ -688,6 +704,12 @@ ALTER TABLE `konsultasi`
   ADD PRIMARY KEY (`id_konsultasi`);
 
 --
+-- Indexes for table `laporan`
+--
+ALTER TABLE `laporan`
+  ADD PRIMARY KEY (`id_laporan`);
+
+--
 -- Indexes for table `montir`
 --
 ALTER TABLE `montir`
@@ -793,12 +815,12 @@ ALTER TABLE `cleaning`
 -- AUTO_INCREMENT for table `customer`
 --
 ALTER TABLE `customer`
-  MODIFY `id_customer` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_customer` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 --
 -- AUTO_INCREMENT for table `customer_acc`
 --
 ALTER TABLE `customer_acc`
-  MODIFY `id_customer` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_customer` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 --
 -- AUTO_INCREMENT for table `emergency`
 --
@@ -810,55 +832,60 @@ ALTER TABLE `emergency`
 ALTER TABLE `konsultasi`
   MODIFY `id_konsultasi` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
+-- AUTO_INCREMENT for table `laporan`
+--
+ALTER TABLE `laporan`
+  MODIFY `id_laporan` int(32) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+--
 -- AUTO_INCREMENT for table `montir`
 --
 ALTER TABLE `montir`
-  MODIFY `id_montir` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_montir` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `montir_acc`
 --
 ALTER TABLE `montir_acc`
-  MODIFY `id_montir` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_montir` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `order_cleaning`
 --
 ALTER TABLE `order_cleaning`
-  MODIFY `id_order` int(32) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_order` int(32) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `order_emergency`
 --
 ALTER TABLE `order_emergency`
-  MODIFY `id_order` int(32) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_order` int(32) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `order_konsultasi`
 --
 ALTER TABLE `order_konsultasi`
-  MODIFY `id_order` int(32) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_order` int(32) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `order_servis_berkala`
 --
 ALTER TABLE `order_servis_berkala`
-  MODIFY `id_order` int(32) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_order` int(32) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `order_servis_umum`
 --
 ALTER TABLE `order_servis_umum`
-  MODIFY `id_order` int(32) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_order` int(32) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `order_spare_part`
 --
 ALTER TABLE `order_spare_part`
-  MODIFY `id_order` int(32) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_order` int(32) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 --
 -- AUTO_INCREMENT for table `pembayaran_saldo`
 --
 ALTER TABLE `pembayaran_saldo`
-  MODIFY `id_pembayaran` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id_pembayaran` int(10) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `saldo`
 --
 ALTER TABLE `saldo`
-  MODIFY `id_saldo` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_saldo` int(10) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `tipe_kendaraan`
 --

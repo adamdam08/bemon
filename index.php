@@ -1,3 +1,10 @@
+<?php
+$time = microtime();
+$time = explode(' ', $time);
+$time = $time[1] + $time[0];
+$start = $time;
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -173,30 +180,46 @@
 	<br/>
 
   </div>
-    <div class="col-sm-3">
+    <div class="col-sm-12">
 		<img src="image/T1.png" class="img-responsive img-rounded text-center"/>
 		<h3 class="text-center">Login</h3>
 		<p class="text-center">Sebelum anda menggunakan jasa kami,anda wajib login ke Bemon,
 		jika belum menjadi member anda bisa klik login lalu klik daftar sekarang</p>
+		<br/>
     </div>
-    <div class="col-sm-3">
+	
+    <div class="col-sm-12">
 		<img src="image/T2.png" class="img-responsive img-rounded text-center"/>
 		<h3 class="text-center">Pesan</h3>
 		<p class="text-center">pilih layanan yang diinginkan lalu klik pesan, tunggu sejenak montir akan datang</p>
+		<br/>
     </div>
-    <div class="col-sm-3">
+    
+	<div class="col-sm-12">
 		<img src="image/T1.png" class="img-responsive img-rounded text-center"/>	  
 		<h3 class="text-center">Montir Akan Datang</h3>
 		<p class="text-center">Montir akan datang ke tempat anda,untuk memperbaiki sepeda motor anda</p>
+		<br/>
     </div>
-	<div class="col-sm-3">
+
+	<div class="col-sm-12">
 		<img src="image/T1.png" class="img-responsive img-rounded text-center" />
 		<h3 class="text-center">Lakukan Pembayaran</h3>
 		<p class="text-center">Setelah montir selesai memperbaiki sepeda motor anda, anda bisa melakukan pembayaran tunai maupun non tunai via be-money</p>
+		<br/>
     </div>
+	
   </div>
 <br/>
 </div>
 </div>
 </body>
 </html>
+<?php
+$time = microtime();
+$time = explode(' ', $time);
+$time = $time[1] + $time[0];
+$finish = $time;
+$total_time = round(($finish - $start), 4);
+echo "Selesai dalam ".$total_time." detik";
+?>

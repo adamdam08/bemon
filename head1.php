@@ -103,7 +103,9 @@
 		}else if(isset($_POST['umum_submit'])){
 			$id_kendaraan = $_POST['id_kendaraan'];
 			$id_layanan = $_POST['id_layanan'];
-			echo" <script> $(document).ready(function() { $('#u_checkout').modal('show');});</script> ";
+			echo" <script> $(document).ready(function() { 
+				$('#u_checkout').modal('show');
+			});</script> ";
 			$queryxz = mysql_query("select * from umum where id_umum = '$id_layanan' ");
 			$dataxz = mysql_fetch_row($queryxz);
 			$nama_layanan = $dataxz[1];
